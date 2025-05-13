@@ -1,0 +1,42 @@
+﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:MauiApp9.ViewModels"
+             x:Class="MauiApp9.MainPage"
+             Title="Du lịch Việt Nam">
+    <ContentPage.BindingContext>
+        <vm:MainViewModel />
+    </ContentPage.BindingContext>
+
+    
+
+    <ScrollView>
+        
+        <StackLayout Padding="20" Spacing="20">
+            <HorizontalStackLayout Spacing="10" HorizontalOptions="Center">
+                <Button Text="Địa điểm" Clicked="OnPlacesClicked" />
+                <Button Text="Giới thiệu" Clicked="OnIntroClicked" />
+                <Button Text="Yêu thích" Clicked="OnFavoritesClicked" />
+            </HorizontalStackLayout>
+            <Label Text="Chọn thành phố:" FontAttributes="Bold" FontSize="18" />
+            <Picker ItemsSource="{Binding Cities}"
+                    ItemDisplayBinding="{Binding Name}"
+                    SelectedItem="{Binding SelectedCity}" />
+
+            <Label Text="Địa điểm nổi bật:" FontAttributes="Bold" FontSize="18" />
+            <CollectionView ItemsSource="{Binding Places}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame Margin="5" Padding="10" BorderColor="LightGray" CornerRadius="10">
+                            <VerticalStackLayout>
+                                <Image Source="{Binding Img}" 
+                                   HeightRequest="200"
+                                   Aspect="AspectFit" />            
+                                <Label Text="{Binding Name}" FontSize="16" HorizontalOptions="Center" Margin="0,10,0,0" />
+                            </VerticalStackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>
