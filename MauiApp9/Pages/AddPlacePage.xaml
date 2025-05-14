@@ -1,0 +1,50 @@
+﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp9.Pages.AddPlacePage"
+             Title="Thêm địa điểm mới">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="15">
+
+            <!-- Nhập tên địa điểm -->
+            <Label Text="Tên địa điểm" />
+            <Entry x:Name="NameEntry" Placeholder="Nhập tên địa điểm" />
+
+            <!-- Chọn thành phố -->
+            <Label Text="Thành phố" />
+            <Picker x:Name="CityPicker"
+                    Title="Chọn thành phố"
+                    ItemsSource="{Binding Cities}"
+                    ItemDisplayBinding="{Binding Name}" />
+
+            <!-- Nhập đường dẫn ảnh -->
+            <Label Text="Ảnh (link hoặc tên file ảnh)" />
+            <Entry x:Name="ImgEntry" Placeholder="Nhập đường dẫn ảnh" />
+
+            <!-- Nút Thêm địa điểm -->
+            <Button Text="Thêm địa điểm"
+                    Clicked="OnAddClicked"
+                    BackgroundColor="Green"
+                    TextColor="White" />
+
+            <!-- Danh sách các địa điểm đã thêm -->
+            <Label Text="Danh sách địa điểm đã thêm" Margin="0,20,0,0"/>
+            <CollectionView ItemsSource="{Binding Places}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Padding="10" BackgroundColor="#f2f2f2" Margin="0,5">
+                            <Label Text="{Binding Name}" FontAttributes="Bold" />
+                            <Label Text="{Binding Img}" FontSize="12" TextColor="Gray"/>
+                            <Button Text="Xóa" 
+                                    Clicked="OnDeleteClicked" 
+                                    BackgroundColor="Red" 
+                                    TextColor="White"
+                                    Margin="0,5,0,0"/>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

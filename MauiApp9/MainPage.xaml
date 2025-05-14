@@ -13,9 +13,13 @@
         
         <StackLayout Padding="20" Spacing="20">
             <HorizontalStackLayout Spacing="10" HorizontalOptions="Center">
-                <Button Text="Địa điểm" Clicked="OnPlacesClicked" />
-                <Button Text="Giới thiệu" Clicked="OnIntroClicked" />
-                <Button Text="Yêu thích" Clicked="OnFavoritesClicked" />
+                <Button Text="Thêm địa điểm mới"
+                Clicked="OnAddPlaceClicked"
+                BackgroundColor="DodgerBlue"
+                TextColor="White"/>     
+
+                <Button Text="Giới thiệu"  />
+                <Button Text="Yêu thích" />
             </HorizontalStackLayout>
             <Label Text="Chọn thành phố:" FontAttributes="Bold" FontSize="18" />
             <Picker ItemsSource="{Binding Cities}"

@@ -38,7 +38,7 @@ public class MainViewModel : INotifyPropertyChanged
             Cities.Add(city);
     }
 
-    private async void LoadPlacesAsync()
+    public async Task LoadPlacesAsync()
     {
         if (SelectedCity == null) return;
         var places = await _db.GetPlacesByCityIdAsync(SelectedCity.Id);
